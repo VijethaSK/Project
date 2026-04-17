@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Admin Login{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-4 col-md-6">
+    <div class="text-center mb-3">
+      <div class="page-title">Admin Login</div>
+      <p class="page-subtitle">Restricted area for hotel staff to manage inventory, facilities, and bookings.</p>
+    </div>
+    <form method="post" class="mt-2">
+      <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input type="text" name="username" class="form-control" placeholder="Admin username" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" placeholder="Password" required>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Login as Admin</button>
+      <p class="text-center text-muted small mt-2 mb-0">
+        Default admin: <code>admin / admin123</code> (change in database for production).
+      </p>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+

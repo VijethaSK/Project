@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}User Registration{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-5 col-md-7">
+    <div class="text-center mb-3">
+      <div class="page-title">Create a Guest Account</div>
+      <p class="page-subtitle">Register once to book rooms, track your stays, and view payment history.</p>
+    </div>
+    <form method="post" class="mt-2">
+      <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input type="text" name="username" class="form-control" placeholder="Choose a unique username" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Full Name</label>
+        <input type="text" name="full_name" class="form-control" placeholder="Your full name" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" name="email" class="form-control" placeholder="you@example.com" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" placeholder="Create a strong password" required>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+      <p class="text-center text-muted small mt-2 mb-0">
+        Already have an account? <a href="{{ url_for('user_login') }}">Sign in</a>
+      </p>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Manage Facilities{% endblock %}
+{% block content %}
+<h2>Manage Facilities</h2>
+
+<h4 class="mt-4">Add New Facility</h4>
+<form method="post" class="row g-3">
+  <div class="col-md-4">
+    <label class="form-label">Facility Name</label>
+    <input type="text" name="name" class="form-control" placeholder="WiFi / AC / Breakfast / Pool / Parking" required>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary mt-2">Add Facility</button>
+  </div>
+</form>
+
+<h4 class="mt-5">Assign Facilities to Rooms</h4>
+<div class="row">
+  <div class="col-md-12">
+    {% for room in rooms %}
+      <div class="card mb-3">
+        <div class="card-header">
+          Room {{ room.room_number }} ({{ room.room_type }})
+        </div>
+        <div class="card-body">
+          <form method="post" action="{{ url_for('update_room_facilities', room_id=room.id) }}">
+            {% for facility in facilities %}
+              {% set checked = false %}
+              {% for rf in room.room_facilities %}
+                {% if rf.facility_id == facility.id %}
+                  {% set checked = true %}
+                {% endif %}
+              {% endfor %}
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="facility_ids" value="{{ facility.id }}" id="f{{ room.id }}-{{ facility.id }}"
+                {% if checked %}checked{% endif %}>
+                <label class="form-check-label" for="f{{ room.id }}-{{ facility.id }}">{{ facility.name }}</label>
+              </div>
+            {% endfor %}
+            <div class="mt-2">
+              <button type="submit" class="btn btn-sm btn-success">Save Facilities</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
+

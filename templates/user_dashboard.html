@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}User Dashboard{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div>
+    <div class="page-title">Welcome back, {{ user.full_name }} 👋</div>
+    <div class="page-subtitle">Search new stays, review upcoming trips, and manage your booking history.</div>
+  </div>
+  <a href="{{ url_for('search_rooms') }}" class="btn btn-primary">Search Rooms</a>
+</div>
+
+<div class="row g-3">
+  <div class="col-md-6">
+    <div class="card border-0 shadow-sm h-100">
+      <div class="card-body">
+        <h5 class="card-title">Plan a new stay</h5>
+        <p class="card-text text-muted small">
+          Check live availability, filter by room type and budget, and book instantly.
+        </p>
+        <a class="btn btn-outline-primary btn-sm" href="{{ url_for('search_rooms') }}">Search &amp; Book</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card border-0 shadow-sm h-100">
+      <div class="card-body">
+        <h5 class="card-title">Your reservations</h5>
+        <p class="card-text text-muted small">
+          View upcoming and past bookings, statuses, and payment information in one place.
+        </p>
+        <a class="btn btn-outline-secondary btn-sm" href="{{ url_for('user_bookings') }}">View My Bookings</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+

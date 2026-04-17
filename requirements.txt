@@ -1,0 +1,19 @@
+flask==3.0.3
+flask_sqlalchemy==3.1.1
+werkzeug==3.0.4
+python-dotenv==1.0.0
+waitress==3.0.0
+
+# Database drivers (install the one you need)
+# For MySQL/MariaDB:
+# pymysql==1.1.0
+# mysqlclient==2.2.0  # Alternative (requires MySQL dev libraries)
+
+# For PostgreSQL:
+# psycopg2-binary==2.9.9
+
+# For SQL Server:
+# pyodbc==5.0.1
+# pymssql==2.2.11  # Alternative
+
+

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}All Reservations{% endblock %}
+{% block content %}
+<h2>All Reservations</h2>
+<table class="table table-bordered table-sm mt-3">
+  <thead class="table-light">
+  <tr>
+    <th>ID</th>
+    <th>User</th>
+    <th>Room</th>
+    <th>Check-in</th>
+    <th>Check-out</th>
+    <th>Guests</th>
+    <th>Status</th>
+    <th>Total Cost</th>
+    <th>Payment</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for b in reservations %}
+    <tr>
+      <td>{{ b.id }}</td>
+      <td>{{ b.user.username }}</td>
+      <td>{{ b.room.room_number }} ({{ b.room.room_type }})</td>
+      <td>{{ b.check_in }}</td>
+      <td>{{ b.check_out }}</td>
+      <td>{{ b.guests }}</td>
+      <td>{{ b.status }}</td>
+      <td>{{ b.total_cost }}</td>
+      <td>
+        <form method="post" action="{{ url_for('update_payment_status', res_id=b.id) }}" class="d-flex gap-1">
+          <select name="payment_status" class="form-select form-select-sm">
+            <option value="Pending" {% if b.payment_status=='Pending' %}selected{% endif %}>Pending</option>
+            <option value="Paid" {% if b.payment_status=='Paid' %}selected{% endif %}>Paid</option>
+            <option value="Failed" {% if b.payment_status=='Failed' %}selected{% endif %}>Failed</option>
+          </select>
+          <button type="submit" class="btn btn-sm btn-success">Save</button>
+        </form>
+      </td>
+      <td>
+        {% if b.status == 'Confirmed' %}
+          <form method="post" action="{{ url_for('admin_cancel_booking', res_id=b.id) }}"
+                onsubmit="return confirm('Cancel this reservation?');">
+            <button type="submit" class="btn btn-sm btn-warning">Cancel</button>
+          </form>
+        {% else %}
+          <span class="text-muted">-</span>
+        {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+
+

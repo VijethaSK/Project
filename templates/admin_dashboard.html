@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div>
+    <div class="page-title">Admin Console</div>
+    <div class="page-subtitle">Hi {{ admin.full_name }}, manage inventory, facilities, and all customer reservations.</div>
+  </div>
+</div>
+
+<div class="row g-3">
+  <div class="col-md-4">
+    <div class="card border-0 shadow-sm h-100">
+      <div class="card-body">
+        <h5 class="card-title">Rooms</h5>
+        <p class="card-text text-muted small">
+          Create and edit rooms, update prices, capacities, and availability status.
+        </p>
+        <a href="{{ url_for('manage_rooms') }}" class="btn btn-outline-primary btn-sm">Manage Rooms</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card border-0 shadow-sm h-100">
+      <div class="card-body">
+        <h5 class="card-title">Facilities</h5>
+        <p class="card-text text-muted small">
+          Configure WiFi, AC, breakfast, parking and assign them to specific rooms.
+        </p>
+        <a href="{{ url_for('manage_facilities') }}" class="btn btn-outline-primary btn-sm">Manage Facilities</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card border-0 shadow-sm h-100">
+      <div class="card-body">
+        <h5 class="card-title">Reservations &amp; Payments</h5>
+        <p class="card-text text-muted small">
+          Monitor all bookings, cancel when needed, and track payment status.
+        </p>
+        <a href="{{ url_for('admin_reservations') }}" class="btn btn-outline-secondary btn-sm">View Reservations</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+

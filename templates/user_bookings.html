@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}My Bookings{% endblock %}
+{% block content %}
+<h2>My Bookings</h2>
+<table class="table table-bordered table-sm mt-3">
+  <thead class="table-light">
+  <tr>
+    <th>ID</th>
+    <th>Room</th>
+    <th>Check-in</th>
+    <th>Check-out</th>
+    <th>Guests</th>
+    <th>Status</th>
+    <th>Total Cost</th>
+    <th>Payment</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for b in bookings %}
+    <tr>
+      <td>{{ b.id }}</td>
+      <td>{{ b.room.room_number }} ({{ b.room.room_type }})</td>
+      <td>{{ b.check_in }}</td>
+      <td>{{ b.check_out }}</td>
+      <td>{{ b.guests }}</td>
+      <td>{{ b.status }}</td>
+      <td>{{ b.total_cost }}</td>
+      <td>{{ b.payment_status }}</td>
+      <td>
+        {% if b.status == 'Confirmed' and b.check_in > today %}
+          <form method="post" action="{{ url_for('cancel_reservation', res_id=b.id) }}"
+                onsubmit="return confirm('Cancel this reservation?');">
+            <button type="submit" class="btn btn-sm btn-warning">Cancel</button>
+          </form>
+        {% else %}
+          <span class="text-muted">-</span>
+        {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+
