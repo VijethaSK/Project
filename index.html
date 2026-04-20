@@ -1,10 +1,57 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>DBMS Project</title>
-</head>
-<body>
-    <h1>DBMS Project</h1>
-    <p>Welcome! This is my DBMS project deployed using GitHub Pages 🚀</p>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Home - Hotel DBMS{% endblock %}
+{% block content %}
+  <div class="row align-items-center g-4">
+    <div class="col-lg-6">
+      <h1 class="page-title mb-2">Smart Hotel Booking Platform</h1>
+      <p class="page-subtitle mb-4">
+        Search live availability, reserve rooms in seconds, and manage reservations – backed by clear DBMS logic.
+      </p>
+      <div class="d-flex flex-wrap gap-2">
+        <a href="{{ url_for('search_rooms') }}" class="btn btn-primary btn-lg">Find a Room</a>
+        <a href="{{ url_for('user_login') }}" class="btn btn-outline-light btn-lg">User Login</a>
+        <a href="{{ url_for('admin_login') }}" class="btn btn-outline-light btn-lg">Admin Panel</a>
+      </div>
+      <div class="mt-4 d-flex flex-wrap gap-3 text-muted small">
+        <div><strong>Real-time</strong> availability checks</div>
+        <div><strong>Conflict-free</strong> reservations</div>
+        <div><strong>Transparent</strong> payment status</div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="row g-3">
+        <div class="col-12 col-sm-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">For Guests</h5>
+              <p class="card-text small text-muted">
+                Create an account, explore rooms by type and price, and manage all your bookings from one place.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">For Admins</h5>
+              <p class="card-text small text-muted">
+                Control rooms, facilities, reservations, and payments with a clean, focused dashboard.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <h6 class="card-subtitle mb-2 text-muted">DBMS Focus</h6>
+              <p class="card-text small mb-0">
+                The system demonstrates entities like <strong>USER</strong>, <strong>ROOM</strong>, <strong>FACILITY</strong>,
+                <strong>RESERVATION</strong>, and automatic overlap checks for bookings.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
